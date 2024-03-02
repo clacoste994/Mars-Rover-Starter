@@ -59,7 +59,7 @@ class Rover {
     
          })
    
-      }  if (command.commandType === 'MODE_CHANGE') {
+      } else if (command.commandType === 'MODE_CHANGE') {
          if (command.value === 'NORMAL') {
            this.mode = command.value;
            response.results.push({ completed: true });
@@ -77,7 +77,6 @@ class Rover {
          if (this.mode === 'LOW_POWER') {
           this.position = this.position;
           response.results.push({ completed: false });
-          //console.log(response.results)
         } else if (command.commandType === 'MOVE') {
          if (command.value !== String) {
           if (this.mode === 'NORMAL') {
