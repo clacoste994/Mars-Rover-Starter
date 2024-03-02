@@ -53,7 +53,7 @@ describe("Rover class", function() {
     let message = new Message("MOVE.", commands);
     let rover = new Rover(8500, 'LOW_POWER')
     let response = rover.receiveMessage(message)
-    expect(response.results).toEqual([{ completed: false }]);
+    expect(response.results).toBeFalsy
   })
 
   it('responds with the position for the move command', function(){

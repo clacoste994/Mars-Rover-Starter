@@ -33,7 +33,6 @@ class Rover {
          if (command.commandType === 'MOVE') {
                if (this.mode === 'LOW_POWER') {
                   response.results.push({ completed: false });
-                  console.log(response.results);
                } else if (command.commandType === 'MOVE') {
                      if (this.mode === 'NORMAL') {
                         this.position = command.value;
