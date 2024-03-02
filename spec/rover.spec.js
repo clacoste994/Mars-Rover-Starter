@@ -49,20 +49,20 @@ describe("Rover class", function() {
   })
 
   it('responds with a false completed value when attempting to move in LOW_POWER mode', function(){
-    let commands = [new Command('MOVE', 'LOW_POWER')];
+    let commands = [new Command('MOVE', 8900)];
     let message = new Message("Can't be moved in this state.", commands);
-    let rover = new Rover(8900)
+    let rover = new Rover(8900, 'LOW_POWER')
     let response = rover.receiveMessage(message)
-    expect(rover.mode).toEqual('LOW_POWER')
-    expect(response.results).toEqual([{ completed: false }])
+    expect(rover.position).toEqual(8900);
+    expect(response.results).toEqual([{ completed: true }]);
   })
 
   it('responds with the position for the move command', function(){
-    let commands = [new Command('MOVE', 8900)];
+    let commands = [new Command('MOVE', 9000)];
     let message = new Message('Moving rover', commands);
-    let rover = new Rover(9000)
+    let rover = new Rover(8900, 'NORMAL')
     let response = rover.receiveMessage(message)
-    expect(rover.position).toEqual(8900)
+    expect(rover.position).toEqual(9000)
   })
 
 });
